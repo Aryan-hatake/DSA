@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/conditionals/conditionals.iml" filepath="$PROJECT_DIR$/conditionals/conditionals.iml" />
+      <module fileurl="file://$PROJECT_DIR$/loops/loops.iml" filepath="$PROJECT_DIR$/loops/loops.iml" />
       <module fileurl="file://$PROJECT_DIR$/math/math.iml" filepath="$PROJECT_DIR$/math/math.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/practice.iml" filepath="$PROJECT_DIR$/.idea/practice.iml" />
     </modules>
