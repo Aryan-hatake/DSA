@@ -16,7 +16,7 @@ public class LexioSmallerArr {
 
         for (int i =0; i<arr.length;i++){
             for (int j=0;j<arr.length;j++){
-                if(arr[i]-arr[j] <=limit && arr[i] - arr[j] >= 0 && i!=j){
+                if(arr[i]-arr[j] <=limit && arr[i] - arr[j] > 0 && i!=j){
                     if(!group.contains(arr[i])){
                         group.add(arr[i]);
                         groupIdx.add(i);
@@ -35,6 +35,7 @@ public class LexioSmallerArr {
         Collections.sort(sortedGroupIdx);
 
         System.out.println(group);
+        System.out.println(sortedGroupIdx);
 
       for(int i =0; i<sortedGroup.size();i++){
           replace(arr,sortedGroupIdx.get(i), sortedGroup.get(i));
