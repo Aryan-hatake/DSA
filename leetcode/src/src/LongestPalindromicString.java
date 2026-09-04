@@ -1,53 +1,41 @@
-import java.util.ArrayList;
-
 public class LongestPalindromicString {
-    public static void main(String[] args) {
-        String s = "racecar";
 
-        int leftPointer = (s.length()-1)/2;
-        int rightPointer = (s.length()-1)/2;
+    public static void main(String[] args) {
+
+        String s = "aaabaaaa";
 
         String longestPalindrome = "";
-        while(leftPointer >= 0 && rightPointer <= s.length() -1){
-            if( leftPointer > 0 && s.charAt(leftPointer+1) == s.charAt(leftPointer-1)){
-                   longestPalindrome = searchPalindrome(s,leftPointer-1,leftPointer+1,new int[]{leftPointer-1,leftPointer+1},longestPalindrome);
+
+        for (int i = 0; i < s.length(); i++) {
+
+            // Odd-length palindrome
+            String odd = expandFromCenter(s, i, i);
+
+            // Even-length palindrome
+            String even = expandFromCenter(s, i, i + 1);
+
+            if (odd.length() > longestPalindrome.length()) {
+                longestPalindrome = odd;
             }
-            if( rightPointer < s.length()-1 && s.charAt(rightPointer+1) == s.charAt(rightPointer-1)){
-                longestPalindrome = searchPalindrome(s,rightPointer-1,rightPointer+1,new int[]{rightPointer-1,rightPointer+1},longestPalindrome);
+
+            if (even.length() > longestPalindrome.length()) {
+                longestPalindrome = even;
             }
-
-            leftPointer = rightPointer < s.length()-1 && leftPointer == 0 ? 0 : leftPointer-1;
-            rightPointer = leftPointer > 0 && rightPointer == s.length() - 1 ? s.length()-1  : rightPointer+1;
-
-
         }
 
         System.out.println(longestPalindrome);
-
-
-
     }
 
-    static String searchPalindrome(String s,int leftPointer,int rightPointer,int[] startEnd,String longestPalindrome){
-        if(leftPointer < 0 && rightPointer == s.length()+1) return longestPalindrome;
+    static String expandFromCenter(String s, int left, int right) {
 
-        if(s.charAt(leftPointer) == s.charAt(rightPointer)){
-            if( (rightPointer - leftPointer) + 1 >= longestPalindrome.length() ){
-                startEnd[0] = leftPointer;
-                startEnd[1] = rightPointer;
-            }
+        while (left >= 0 &&
+                right < s.length() &&
+                s.charAt(left) == s.charAt(right)) {
 
-            if(leftPointer == 0 && rightPointer <= s.length()-1){
-               return  searchPalindrome(s,0,rightPointer+1,startEnd,longestPalindrome);
-            } else if (rightPointer == s.length()-1 && leftPointer > 0) {
-                return searchPalindrome(s,leftPointer-1,s.length()-1,startEnd,longestPalindrome);
-            }
-            else {
-                return searchPalindrome(s,leftPointer-1,rightPointer+1,startEnd,longestPalindrome);
-            }
-
+            left--;
+            right++;
         }
 
-        return s.substring(leftPointer,rightPointer);
-        }
+        return s.substring(left + 1, right);
+    }
 }
