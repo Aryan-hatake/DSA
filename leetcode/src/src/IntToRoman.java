@@ -15,33 +15,81 @@ public class IntToRoman {
         int i = 0;
 
         String Roman ="";
-        while(i<arr.length){
+
+        while (i< arr.length){
             int currentNum = arr[i] * (int) Math.pow(10,(arr.length-1)-i);
-            boolean lessThenThou = true;
-            if(currentNum >= 1000){
+
+            if(currentNum == 0){
+                i++;
+            }
+            else if(currentNum >=1 && currentNum<4){
+                Roman+=romanLetters[0];
+                currentNum-=romanValues[0];
+            }
+            else  if(currentNum == 4){
+                Roman+=romanLetters[1];
+                currentNum-=romanValues[1];
+            }  else  if(currentNum >=5 && currentNum<9){
+                Roman+=romanLetters[2];
+                currentNum-=romanValues[2];
+            } else  if(currentNum >=10 && currentNum<40){
+                Roman+=romanLetters[3];
+                currentNum-=romanValues[3];
+            } else  if(currentNum >=40 && currentNum<50){
+                Roman+=romanLetters[4];
+                currentNum-=romanValues[4];
+            } else  if(currentNum >=50 && currentNum<90){
+                Roman+=romanLetters[5];
+                currentNum-=romanValues[5];
+            } else  if(currentNum >=90 && currentNum<100){
+                Roman+=romanLetters[6];
+                currentNum-=romanValues[6];
+            }else  if(currentNum >=100 && currentNum<400){
+                Roman+=romanLetters[7];
+                currentNum-=romanValues[7];
+            }else  if(currentNum >=400 && currentNum<500){
+                Roman+=romanLetters[8];
+                currentNum-=romanValues[8];
+            }else  if(currentNum >=500 && currentNum<900){
+                Roman+=romanLetters[9];
+                currentNum-=romanValues[9];
+            }else  if(currentNum >=900 && currentNum<1000){
+                Roman+=romanLetters[10];
+                currentNum-=romanValues[10];
+            }
+            else{
                 Roman += "M".repeat(arr[i]);
-                lessThenThou = false;
+                currentNum-=romanValues[11];
             }
-            int lowest = Integer.MAX_VALUE;
-            int prev = Integer.MAX_VALUE;
-            int lowestIdx = 0;
 
-            while(currentNum!=0 && lessThenThou){
-                for(int r= 0;r < romanLetters.length;r++){
-                    int result = Math.abs(currentNum - romanValues[r]);
-                    if(prev<result) break;
-
-                    if(lowest > result){
-                        lowest = result;
-                        lowestIdx = r;
-                    }
-                    prev = result;
-                }
-                Roman += romanLetters[lowestIdx];
-                currentNum-=romanValues[lowestIdx];
-            }
-            i++;
         }
+//        while(i<arr.length){
+//            int currentNum = arr[i] * (int) Math.pow(10,(arr.length-1)-i);
+//            boolean lessThenThou = true;
+//            if(currentNum >= 1000){
+//                Roman += "M".repeat(arr[i]);
+//                lessThenThou = false;
+//            }
+//            int lowest = Integer.MAX_VALUE;
+//            int prev = Integer.MAX_VALUE;
+//            int lowestIdx = 0;
+//
+//            while(currentNum!=0 && lessThenThou){
+//                for(int r= 0;r < romanLetters.length;r++){
+//                    int result = Math.abs(currentNum - romanValues[r]);
+//                    if(prev<result) break;
+//
+//                    if(lowest > result){
+//                        lowest = result;
+//                        lowestIdx = r;
+//                    }
+//                    prev = result;
+//                }
+//                Roman += romanLetters[lowestIdx];
+//                currentNum-=romanValues[lowestIdx];
+//            }
+//            i++;
+//        }
         System.out.println(Roman);
     }
 }
