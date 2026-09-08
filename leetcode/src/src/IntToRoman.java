@@ -13,14 +13,15 @@ public class IntToRoman {
                 .toArray();
 
         int i = 0;
-
+        int currentNum = arr[i] * (int) Math.pow(10,(arr.length-1)-i);
         String Roman ="";
 
         while (i< arr.length){
-            int currentNum = arr[i] * (int) Math.pow(10,(arr.length-1)-i);
 
-            if(currentNum == 0){
+
+            if(currentNum == 0 && i < arr.length-1){
                 i++;
+                currentNum = arr[i] * (int) Math.pow(10,(arr.length-1)-i);
             }
             else if(currentNum >=1 && currentNum<4){
                 Roman+=romanLetters[0];
@@ -29,37 +30,45 @@ public class IntToRoman {
             else  if(currentNum == 4){
                 Roman+=romanLetters[1];
                 currentNum-=romanValues[1];
-            }  else  if(currentNum >=5 && currentNum<9){
-                Roman+=romanLetters[2];
-                currentNum-=romanValues[2];
-            } else  if(currentNum >=10 && currentNum<40){
-                Roman+=romanLetters[3];
-                currentNum-=romanValues[3];
-            } else  if(currentNum >=40 && currentNum<50){
+            }  else  if(currentNum >=5 && currentNum<9) {
+                Roman += romanLetters[2];
+                currentNum -= romanValues[2];
+            }
+                else if(currentNum == 9){
+                    Roman+=romanLetters[3];
+                    currentNum-=romanValues[3];
+                }
+             else  if(currentNum >=10 && currentNum<40){
                 Roman+=romanLetters[4];
                 currentNum-=romanValues[4];
-            } else  if(currentNum >=50 && currentNum<90){
+            } else  if(currentNum >=40 && currentNum<50){
                 Roman+=romanLetters[5];
                 currentNum-=romanValues[5];
-            } else  if(currentNum >=90 && currentNum<100){
+            } else  if(currentNum >=50 && currentNum<90){
                 Roman+=romanLetters[6];
                 currentNum-=romanValues[6];
-            }else  if(currentNum >=100 && currentNum<400){
+            } else  if(currentNum >=90 && currentNum<100){
                 Roman+=romanLetters[7];
                 currentNum-=romanValues[7];
-            }else  if(currentNum >=400 && currentNum<500){
+            }else  if(currentNum >=100 && currentNum<400){
                 Roman+=romanLetters[8];
                 currentNum-=romanValues[8];
-            }else  if(currentNum >=500 && currentNum<900){
+            }else  if(currentNum >=400 && currentNum<500){
                 Roman+=romanLetters[9];
                 currentNum-=romanValues[9];
-            }else  if(currentNum >=900 && currentNum<1000){
+            }else  if(currentNum >=500 && currentNum<900){
                 Roman+=romanLetters[10];
                 currentNum-=romanValues[10];
+            }else  if(currentNum >=900 && currentNum<1000){
+                Roman+=romanLetters[11];
+                currentNum-=romanValues[11];
+            }
+            else if( currentNum >=1000){
+                Roman += "M";
+                currentNum-=romanValues[12];
             }
             else{
-                Roman += "M".repeat(arr[i]);
-                currentNum-=romanValues[11];
+                i++;
             }
 
         }
