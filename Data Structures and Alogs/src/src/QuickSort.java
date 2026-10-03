@@ -32,13 +32,8 @@ public class QuickSort {
             while(arr[e] > pivot) e--;
 
             //swap those two violation
-           if(s<e){
 
-            int temp = arr[s];
-            arr[s] = arr[e];
-            arr[e] = temp;
-
-           }
+            
         }
 
         //do quicksort for all elements for LHS except pivot

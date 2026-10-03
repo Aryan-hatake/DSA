@@ -9,14 +9,8 @@ public class Combinations {
 
         for(int i = 1;i<=n;i++){
             for(int j=i;j<=n;j+=k-1){
-                  ArrayList<Integer> = getList(i,j);
             }
         }
     }
 
-    static ArrayList<Integer> getList(int i, int j,int k,ArrayList<Integer> list,ArrayList<ArrayList<Integer>> parentList){
-
-
-
-    }
 }
