@@ -1,3 +1,3 @@
 function(s){
-     return s.split(" ").sort().join(" ")
+     return s.split(" ").sort().join(" ") 
 }
