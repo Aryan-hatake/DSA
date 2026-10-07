@@ -11,7 +11,7 @@
                i++;
                j=i+1;
             }
-           else if(s.charAt(i) == s.charAt(j)){
+           else if(s.charAt(i)  == s.charAt(j)){
                     let distance = Math.abs(i-j)-1;
                     console.log(distance)
                   let index = s.charCodeAt(i) - 'a'.charCodeAt(0);
