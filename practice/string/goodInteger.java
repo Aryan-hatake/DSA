@@ -27,7 +27,7 @@ class goodInteger{
                     max = store.get(i);
                 }
             }
-              System.out.println(String.valueOf(max).repeat(3));
+              System.out.println(String.valueOf(max).repeat(4));
             
         }
           System.out.println("");
