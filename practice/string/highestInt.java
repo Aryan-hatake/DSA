@@ -19,6 +19,6 @@ class highestInt{
             max = nums.get(i);
            }
        }
-      System.out.print(max);
+      System.out.print(max );
     }
 }
